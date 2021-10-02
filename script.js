@@ -1,7 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-
 // Assignment Code
 var numbers = [1,2,3,4,5,6,7,8,9,0]
 var symbols = "`!@#$%^&*()_+"
@@ -13,15 +12,26 @@ var splitLowerLetters = lowerLetters.split("")
 var splitUpperLetters = upperLetters.split("")
 // console.log(splitLowerLetters)
 
-var all =[]
+var all = []
 
 var character = []
 var password = []
 
-
-
 generateBtn.addEventListener("click", function() {
+  // Password Length
   var passwordLength = window.prompt("Choose a password length")
+  if (passwordLength < 8) {
+    alert("Test")
+    return
+  }
+  if (passwordLength > 128) {
+    alert("test1")
+    return
+  }
+  if (isNaN(passwordLength)) {
+    alert("test2")
+    return
+  }
   var pickedNumbers = window.confirm("Confirm if you want Numbers")
 // console.log(pickedNumbers)
   var pickedUpperLetters = window.confirm("Confirm if you want Upper Letters")
@@ -46,15 +56,15 @@ generateBtn.addEventListener("click", function() {
     for (i = 0; i < passwordLength; i++) {
       var randomCharacter = character[Math.floor(Math.random() * character.length)];
 
-
       // console.log(randomNum)
-      password.push(randomCharacter);   
+      password.push(randomCharacter); 
     }
-  window.alert(password.join(""));
+    password.join("");
+    // password.join("");
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-});
+  passwordText.value = password.join("");
 
+});
 
 
