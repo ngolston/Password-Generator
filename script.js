@@ -16,22 +16,17 @@ var all = []
 
 var character = []
 var password = []
+var passwordText = []
 
-generateBtn.addEventListener("click", function() {
+generateBtn.addEventListener("click", function(){
   // Password Length
   var passwordLength = window.prompt("Choose a password length")
-  if (passwordLength < 8) {
-    alert("Test")
-    return
+
+  if (passwordLength < 8 || passwordLength > 128 ) {
+    alert("Please enter a character length that is between 8 and 128!");
+    return generatePassword();
   }
-  if (passwordLength > 128) {
-    alert("test1")
-    return
-  }
-  if (isNaN(passwordLength)) {
-    alert("test2")
-    return
-  }
+  
   var pickedNumbers = window.confirm("Confirm if you want Numbers")
 // console.log(pickedNumbers)
   var pickedUpperLetters = window.confirm("Confirm if you want Upper Letters")
@@ -43,15 +38,15 @@ generateBtn.addEventListener("click", function() {
 // console.log(passwordLength)
 
   if (pickedNumbers) {
-    character = character.concat(numbers);
-  }
+    character = character.concat(numbers); }
   // console.log(character)
   if (pickedUpperLetters) { character = character.concat(splitUpperLetters); }
   // console.log(character)
   if (pickedLowerLetters) { character = character.concat(splitLowerLetters); }
   // console.log(character)
-  if (pickedSymbols) { character = character.concat(splitLowerSymbols); }
-
+  if (pickedSymbols) { character = character.concat(splitLowerSymbols); 
+  }
+  
   if (passwordLength.length)
     for (i = 0; i < passwordLength; i++) {
       var randomCharacter = character[Math.floor(Math.random() * character.length)];
@@ -61,7 +56,7 @@ generateBtn.addEventListener("click", function() {
     }
     password.join("");
     // password.join("");
-  var passwordText = document.querySelector("#password");
+  passwordText = document.querySelector("#password");
 
   passwordText.value = password.join("");
 
